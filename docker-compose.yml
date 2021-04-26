@@ -11,8 +11,8 @@ services:
     ports: 
       - 4433
     labels:
-      - traefik.http.routers.signal-proxy.rule=Host("signal.mydomain.com") 
-      - traefik.http.routers.signal-proxy.tls=true
-      - traefik.http.routers.signal-proxy.tls.certresolver=leresolver
+      - traefik.tcp.routers.signal-proxy.rule=HostSNI("signal.mydomain.com") 
+      - traefik.tcp.routers.signal-proxy.tls=true
+      - traefik.tcp.routers.signal-proxy.tls.certresolver=leresolver
     command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; /opt/nginx/sbin/nginx -s reload; done & /opt/nginx/sbin/nginx -c /etc/nginx/conf.d/nginx.conf -g \"daemon off;\"'"
 
