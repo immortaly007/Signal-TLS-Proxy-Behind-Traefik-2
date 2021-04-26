@@ -1,6 +1,18 @@
 version: '3'
 
 services:
+  traefik:
+    image: traefik:v2.4
+    network_mode: bridge
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock:ro"
+      - "./data/traefik/acme:/acme"
+      - "./data/traefik/traefik.yml:/etc/traefik/traefik.yml:ro"
+      - "./data/traefik/dynamic:/opt/traefik/dynamic"
+    restart: unless-stopped
   nginx-relay:
     build: ./nginx-relay/
     restart: unless-stopped
@@ -11,6 +23,7 @@ services:
     ports: 
       - 4433
     labels:
+      - traefik.enable=true
       - traefik.tcp.routers.signal-proxy.rule=HostSNI("signal.mydomain.com") 
       - traefik.tcp.routers.signal-proxy.tls=true
       - traefik.tcp.routers.signal-proxy.tls.certresolver=leresolver
