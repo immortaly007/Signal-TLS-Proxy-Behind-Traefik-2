@@ -15,4 +15,4 @@ To run a Signal TLS proxy, you will need a host with a domain name that has port
 5. (Optional) if you already have a running Traefik, comment out/delete the traefik service in the `docker-compose.yml` file, and make sure that the certresolver name for the proxy container matches your Traefik installation.
 6. `docker-compose up --detach`
 
-Your proxy is now running! You can share this with the URL `https://signal.tube/#<your_host_name>` 
+Your proxy is now running! You can share this with the URL `https://signal.tube/#<your_host_name>`
