@@ -17,6 +17,6 @@ RUN adduser --system --no-create-home --disabled-login --disabled-password --gro
 
 WORKDIR /
 
-EXPOSE 443
+EXPOSE 4433
 
 CMD ["/opt/nginx/sbin/nginx", "-c", "/etc/nginx/conf.d/nginx.conf", "-g", "daemon off;"]

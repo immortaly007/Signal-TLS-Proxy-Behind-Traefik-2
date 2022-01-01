@@ -1,11 +1,14 @@
-# Signal TLS Proxy
+# Signal TLS Proxy Behind Traefik 2
+
+This setup assumes that you have multiple services running on your server, and traefik 2 is used as the load balancer. 
+This means that Traefik will also handle the SSL termination.
 
 To run a Signal TLS proxy, you will need a host with a domain name that has ports 80 and 443 available.
 
 1. Install docker and docker-compose (`apt update && apt install docker docker-compose`)
-1. Ensure your current user has access to docker (`adduser $USER docker`)
-1. Clone this repository
-1. `./init-certificate.sh`
-1. `docker-compose up --detach`
+2. Ensure your current user has access to docker (`adduser $USER docker`)
+3. Clone this repository
+4. `./init-certificate.sh`
+5. `docker-compose up --detach`
 
 Your proxy is now running! You can share this with the URL `https://signal.tube/#<your_host_name>`
