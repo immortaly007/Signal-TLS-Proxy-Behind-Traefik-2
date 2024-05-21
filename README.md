@@ -13,6 +13,6 @@ To run a Signal TLS proxy, you will need a host with a domain name that has port
    ```
 4. Update your e-mail address in `/data/traefik/traefik.yml`; `certificatesResolvers.leresolver.acme.email`
 5. (Optional) if you already have a running Traefik, comment out/delete the traefik service in the `docker-compose.yml` file, and make sure that the certresolver name for the proxy container matches your Traefik installation.
-6. `docker-compose up --detach`
+6. `docker compose up --detach --build`
 
 Your proxy is now running! You can share this with the URL `https://signal.tube/#<your_host_name>`
